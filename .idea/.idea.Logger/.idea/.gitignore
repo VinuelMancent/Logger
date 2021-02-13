@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.Logger.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Vincent\RiderProjects\Logger\.idea\.idea.Logger\.idea/dataSources/
+/dataSources.local.xml
