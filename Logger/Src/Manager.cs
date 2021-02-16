@@ -5,6 +5,13 @@ namespace Logger.Src
 {
     public class Manager
     {
+        private static readonly Lazy<Manager> lazy = new Lazy<Manager>(() => new Manager() );
+        
+        public static Manager Instance
+        {
+            get { return lazy.Value; }
+        }
+        
         private Dictionary<string, Logger> Channels; //stores all created channels
         
         //creates the default logger, logging everything into console
@@ -57,6 +64,16 @@ namespace Logger.Src
         public void Warning(string channelName, string message)
         {
             GetLoggerInstance(channelName).Warning(message);
+        }
+
+        public void Error(string channelName, string message)
+        {
+            GetLoggerInstance(channelName).Error(message);
+        }
+
+        public void Fatal(string channelName, string message)
+        {
+            GetLoggerInstance(channelName).Fatal(message);
         }
        
     }
