@@ -5,48 +5,52 @@ namespace Logger.Src
 {
     public class Manager
     {
-        private static readonly Lazy<Manager> lazy = new Lazy<Manager>(() => new Manager() );
+        private static readonly Lazy<Manager> Lazy = new Lazy<Manager>(() => new Manager() );
         
         public static Manager Instance
         {
-            get { return lazy.Value; }
+            get
+            {
+                return Lazy.Value;
+            }
         }
         
-        private Dictionary<string, Logger> Channels; //stores all created channels
+        private Dictionary<string, Logger> Channels = new Dictionary<string, Logger>(); //stores all created channels
         
         //creates the default logger, logging everything into console
         private Manager()
         {
-            var defaultLogger = new Logger("default");
-            Channels.Add("default", defaultLogger); 
+            Channels.Add("default", null); 
         }
 
         #nullable enable
         //creates a new channel, if the filepath is given it will write into the file, if not it will write into the console
         public void AddChannel(string channelName, string? filePath)
         {
-            if (filePath != null)
+            if (!Channels.ContainsKey(channelName))
             {
-                var newLogger = new Logger(channelName, filePath);
+                Logger newLogger;
+                if (filePath != null)
+                {
+                    newLogger = new Logger(channelName, filePath);
+                }
+                else
+                {
+                    newLogger = new Logger(channelName);
+                }
                 Channels.Add(channelName, newLogger);
             }
-            else
-            {
-                var newLogger = new Logger(channelName);
-                Channels.Add(channelName, newLogger);
-            }
+            
         }
 
         private Logger GetLoggerInstance(string channelName)
         {
-            foreach (var KeyValue in Channels)
-            {
-                if (KeyValue.Key.Equals(channelName))
-                {
-                    return KeyValue.Value;
-                }
-            }
-
+            Channels.TryGetValue(channelName, out Logger returnValue);
+            if(returnValue != null)
+                return returnValue;
+            Channels.TryGetValue("default", out Logger returnDefaultValue);
+            if (returnValue != null)
+                return returnDefaultValue;
             throw new Exception("couldn't find channel");
         }
         

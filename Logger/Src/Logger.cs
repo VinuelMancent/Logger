@@ -15,6 +15,7 @@ namespace Logger.Src
             
             log = new LoggerConfiguration()
                 .WriteTo.Console()
+                .MinimumLevel.Verbose()
                 .CreateLogger();
         }
         //Constructor for logging into a file
@@ -23,6 +24,7 @@ namespace Logger.Src
             this.channelName = channelName;
             log = new LoggerConfiguration()
                 .WriteTo.File(filePath)
+                .MinimumLevel.Verbose()
                 .CreateLogger();
            
         }
