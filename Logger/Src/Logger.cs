@@ -6,9 +6,8 @@ namespace Logger.Src
     public class Logger
     {
         private Serilog.Core.Logger log;
-        private string channelName = "";
+        private string channelName;
         //Constructor
-        #nullable enable
         public Logger(string channelName)
         {
             this.channelName = channelName;
@@ -26,13 +25,12 @@ namespace Logger.Src
                 .WriteTo.File(filePath)
                 .MinimumLevel.Verbose()
                 .CreateLogger();
-           
         }
         
         //getter for the channelName
         public string GetChannelName()
         {
-            return this.channelName;
+            return channelName;
         }
         
         //Ab hier starten die logger methoden

@@ -29,16 +29,14 @@ namespace Logger.Src
         {
             if (!Channels.ContainsKey(channelName))
             {
-                Logger newLogger;
                 if (filePath != null)
                 {
-                    newLogger = new Logger(channelName, filePath);
+                    Channels.Add(channelName, new Logger(channelName, filePath));
                 }
                 else
                 {
-                    newLogger = new Logger(channelName);
+                    Channels.Add(channelName, new Logger(channelName));
                 }
-                Channels.Add(channelName, newLogger);
             }
             
         }
@@ -49,7 +47,7 @@ namespace Logger.Src
             if(returnValue != null)
                 return returnValue;
             Channels.TryGetValue("default", out Logger returnDefaultValue);
-            if (returnValue != null)
+            if (returnDefaultValue != null)
                 return returnDefaultValue;
             throw new Exception("couldn't find channel");
         }
