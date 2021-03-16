@@ -20,7 +20,7 @@ namespace Logger.Src
         //creates the default logger, logging everything into console
         private Manager()
         {
-            Channels.Add("default", null); 
+            AddChannel("default", null);
         }
 
         #nullable enable
@@ -31,11 +31,13 @@ namespace Logger.Src
             {
                 if (filePath != null)
                 {
-                    Channels.Add(channelName, new Logger(channelName, filePath));
+                    var newLogger = new Logger(channelName, filePath);
+                    Channels.Add(channelName, newLogger);
                 }
                 else
                 {
-                    Channels.Add(channelName, new Logger(channelName));
+                    var newLogger = new Logger(channelName);
+                    Channels.Add(channelName, newLogger);
                 }
             }
             
@@ -43,6 +45,13 @@ namespace Logger.Src
 
         private Logger GetLoggerInstance(string channelName)
         {
+            Logger channel = Channels[channelName];
+            if (channel != null)
+                return channel;
+            channel = Channels["default"];
+            if (channel != null)
+                return channel;
+            throw new Exception("couldn't find channel");
             Channels.TryGetValue(channelName, out Logger returnValue);
             if(returnValue != null)
                 return returnValue;
