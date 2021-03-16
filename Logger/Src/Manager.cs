@@ -45,13 +45,6 @@ namespace Logger.Src
 
         private Logger GetLoggerInstance(string channelName)
         {
-            Logger channel = Channels[channelName];
-            if (channel != null)
-                return channel;
-            channel = Channels["default"];
-            if (channel != null)
-                return channel;
-            throw new Exception("couldn't find channel");
             Channels.TryGetValue(channelName, out Logger returnValue);
             if(returnValue != null)
                 return returnValue;
