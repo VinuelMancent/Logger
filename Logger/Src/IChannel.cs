@@ -2,6 +2,7 @@ namespace Logger
 {
     public interface IChannel
     {
+        public string GetName();
         public void Debug3(string message);
         public void Debug2(string message);
         public void Debug1(string message);

@@ -10,14 +10,16 @@ namespace MSTest_Logger
         [TestMethod]
         public void Test_Info()
         {
-            
+            _logManager.Info("Console", "Test nachricht INFO");
         }
-
-
-        private void PrepareChannel()
+        [TestMethod]
+        public void Test_Debug1()
         {
-            _logManager.AddChannel("console", new Logger.ChannelConsole());
+            _logManager.Info("Console", "Test nachricht DEBUG1");
         }
+        
+
+        
     }
 }
 

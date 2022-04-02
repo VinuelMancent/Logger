@@ -4,6 +4,11 @@ namespace Logger
 {
     public class ChannelConsole: IChannel
     {
+        public string GetName()
+        {
+            return "Console";
+        }
+
         public void Debug3(string message)
         {
             Console.WriteLine($"[Debug3] {message}");
