@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{107DCC1B-8EEC-4958-881E-9260DA4AA2A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSTest_Logger", "MSTest_Logger\MSTest_Logger.csproj", "{399415D1-36D1-42DF-9FE5-01BBC7A66B59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{107DCC1B-8EEC-4958-881E-9260DA4AA2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{107DCC1B-8EEC-4958-881E-9260DA4AA2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{107DCC1B-8EEC-4958-881E-9260DA4AA2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{399415D1-36D1-42DF-9FE5-01BBC7A66B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{399415D1-36D1-42DF-9FE5-01BBC7A66B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{399415D1-36D1-42DF-9FE5-01BBC7A66B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{399415D1-36D1-42DF-9FE5-01BBC7A66B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
